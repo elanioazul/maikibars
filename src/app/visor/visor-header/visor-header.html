@@ -13,7 +13,10 @@
         </button>
       }
 
-      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onBarSelected($event)">
+      <mat-autocomplete
+        #auto="matAutocomplete"
+        [displayWith]="displayFn"
+        (optionSelected)="onBarSelected($event)">
         @for (bar of filteredBars(); track bar.properties?.['name']) {
           <mat-option [value]="bar">
             {{ bar.properties?.['name'] || 'Unnamed Bar' }}
@@ -22,8 +25,3 @@
       </mat-autocomplete>
   </mat-form-field>
 </div>
-
-<!-- <div>
-
-  Current Size: {{ screenStore.size() }}
-</div> -->

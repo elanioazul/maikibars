@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { startWith } from 'rxjs';
+import { Feature, Point } from 'geojson';
 
 @Component({
   selector: 'app-visor-header',
@@ -29,18 +30,24 @@ export class VisorHeader {
       { initialValue: '' }
   );
 
-  filteredBars = computed(() => {
-    console.log(this.searchTerm());
+filteredBars = computed(() => {
+    const rawValue = this.searchTerm();
 
-      const term = this.searchTerm().toLowerCase();
-      const allBars = this.locationsService.barsFeatures();
+    if (typeof rawValue !== 'string') return [];
 
-      if (!term) return [];
+    const term = rawValue.toLowerCase();
+    const allBars = this.locationsService.barsFeatures();
 
-      return allBars!.filter(bar =>
-        bar.properties?.['name']?.toLowerCase().includes(term)
-      ).slice(0, 10); // Limit results for performance
+    if (!term) return [];
+
+    return allBars!.filter(bar =>
+      bar.properties?.['name']?.toLowerCase().includes(term)
+    ).slice(0, 10);
   });
+
+  displayFn(bar: any): string {
+    return bar && bar.properties ? bar.properties.name : '';
+  }
 
   constructor() {
     console.log(this.screenStore.isMobile());
@@ -55,8 +62,8 @@ export class VisorHeader {
   }
 
   onBarSelected(event: any): void {
-      const selectedBar = event.option.value;
-      console.log('Selected Bar Feature:', selectedBar);
+      const selectedBar = event.option.value as Feature<Point>;
+      console.log('Selected Bar Feature:', selectedBar.properties!['name']);
       // You could also emit this to the map to center on these coordinates
     }
 
