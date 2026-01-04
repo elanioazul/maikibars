@@ -8,7 +8,7 @@ import maplibregl, {
 
 
 const icon = 'assets/map-pin-plus-inside.png';
-const geojson = 'assets/data/osm_cafe.geojson';
+const geojson = 'assets/data/maikibars.geojson';
 
 @Component({
   selector: 'app-visor-map',

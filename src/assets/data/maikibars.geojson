@@ -1,9 +1,80 @@
 {
-"type": "FeatureCollection",
-"name": "maikibars",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-"features": [
-{ "type": "Feature", "properties": { "id": 1, "name": "La embajada de embajadores", "address": "C. de Embajadores, 66, Centro, 28012 Madrid", "desc": "me flipa, lo vale todo" }, "geometry": { "type": "Point", "coordinates": [ -3.703925322502233, 40.407207697416716 ] } },
-{ "type": "Feature", "properties": { "id": 2, "name": "Ataca paca", "address": "Calle de Arganzuela, 20, Centro, 28005 Madrid", "desc": "buenos tiempos" }, "geometry": { "type": "Point", "coordinates": [ -3.709667855229297, 40.407588875635248 ] } }
-]
+  "type": "FeatureCollection",
+  "name": "maikibars",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1,
+        "name": "La embajada de embajadores",
+        "address": "C. de Embajadores, 66, Centro, 28012 Madrid",
+        "desc": "me flipa, lo vale todo. Los bocadillos de escándalo. Chicas wapas por la zona",
+        "price": "por 15 euros tapeas dpm"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.703925322502233,
+          40.407207697416716
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2,
+        "name": "Ataca paca",
+        "address": "Calle de Arganzuela, 20, Centro, 28005 Madrid",
+        "desc": "buenos tiempos alli cuando lo pasabamos bien con pilar y lobo",
+        "price": "por 15 euros tapeas dpm"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.709667855229297,
+          40.407588875635248
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3,
+        "name": "Casa Mingo",
+        "address": "P.º de la Florida, 34, Moncloa - Aravaca, 28008 Madrid",
+        "desc": "asturiano de antaño, de esos con caspa en la sidra. Paciencia los findes que se peta y hay cola",
+        "price": "billetera holgada se necesita"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.725256,
+          40.424960
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4,
+        "name": "El viajero",
+        "address": "Pl. de la Cebada, 11, Centro, 28005 Madrid",
+        "desc": "postureo en latina. todo correcto y bien",
+        "price": "bueeeeno, medio medio no se"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.710179,
+          40.411644
+        ]
+      }
+    }
+  ]
 }
