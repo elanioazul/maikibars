@@ -1,5 +1,5 @@
 import { httpResource } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { computed, Injectable } from '@angular/core';
 import { FeatureCollection } from 'geojson';
 
 
@@ -17,4 +17,6 @@ export class LocationService {
   readonly bars = this.maikibarsResource.value;
   readonly isLoading = this.maikibarsResource.isLoading;
   readonly error = this.maikibarsResource.error;
+
+  readonly barsFeatures = computed(() => this.bars()?.features ?? []);
 }

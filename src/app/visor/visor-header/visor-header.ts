@@ -1,14 +1,46 @@
-import { Component, effect, inject } from '@angular/core';
+import { Component, computed, effect, inject, OnInit, signal } from '@angular/core';
 import {  ScreenSizeStore } from '../../core/store/screensize.state';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { CommonModule } from '@angular/common';
+import { LocationService } from '../../core/services/location-service.service';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { startWith } from 'rxjs';
 
 @Component({
   selector: 'app-visor-header',
-  imports: [],
+  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule,
+    MatIconModule, MatButtonModule, MatAutocompleteModule, CommonModule],
   templateUrl: './visor-header.html',
   styleUrl: './visor-header.scss',
 })
 export class VisorHeader {
   readonly screenStore = inject(ScreenSizeStore);
+  readonly locationsService = inject(LocationService);
+
+  searchControl = new FormControl('', { nonNullable: true });
+
+  searchTerm = toSignal(
+      this.searchControl.valueChanges.pipe(startWith('')),
+      { initialValue: '' }
+  );
+
+  filteredBars = computed(() => {
+    console.log(this.searchTerm());
+
+      const term = this.searchTerm().toLowerCase();
+      const allBars = this.locationsService.barsFeatures();
+
+      if (!term) return [];
+
+      return allBars!.filter(bar =>
+        bar.properties?.['name']?.toLowerCase().includes(term)
+      ).slice(0, 10); // Limit results for performance
+  });
 
   constructor() {
     console.log(this.screenStore.isMobile());
@@ -21,4 +53,11 @@ export class VisorHeader {
       }
     });
   }
+
+  onBarSelected(event: any): void {
+      const selectedBar = event.option.value;
+      console.log('Selected Bar Feature:', selectedBar);
+      // You could also emit this to the map to center on these coordinates
+    }
+
 }

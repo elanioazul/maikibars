@@ -1,3 +1,29 @@
-<div class="h-full p-4 flex align-items-center justify-content-end">
-  Current Size: {{ screenStore.size() }}
+<div class="h-full p-2 flex align-items-center justify-content-center">
+  <mat-form-field appearance="outline" class="search-field">
+      <mat-label>Busca por nombre</mat-label>
+      <input
+        type="text"
+        matInput
+        [formControl]="searchControl"
+        [matAutocomplete]="auto">
+
+      @if (searchControl.value) {
+        <button matSuffix mat-icon-button aria-label="Clear" (click)="searchControl.setValue('')">
+          <mat-icon>close</mat-icon>
+        </button>
+      }
+
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onBarSelected($event)">
+        @for (bar of filteredBars(); track bar.properties?.['name']) {
+          <mat-option [value]="bar">
+            {{ bar.properties?.['name'] || 'Unnamed Bar' }}
+          </mat-option>
+        }
+      </mat-autocomplete>
+  </mat-form-field>
 </div>
+
+<!-- <div>
+
+  Current Size: {{ screenStore.size() }}
+</div> -->
