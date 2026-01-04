@@ -1,5 +1,5 @@
-import { Component, computed, inject } from '@angular/core';
-import { ScreensizeService } from '../../core/services/screensize.service';
+import { Component, inject } from '@angular/core';
+import {  ScreenSizeStore } from '../../core/store/screensize.state';
 
 @Component({
   selector: 'app-visor-header',
@@ -8,12 +8,9 @@ import { ScreensizeService } from '../../core/services/screensize.service';
   styleUrl: './visor-header.scss',
 })
 export class VisorHeader {
-  screenSizeService = inject(ScreensizeService);
-
-  sizeState = computed(() => this.screenSizeService.size())
+  readonly screenStore = inject(ScreenSizeStore);
 
   constructor() {
-    console.log(this.sizeState());
 
   }
 }
