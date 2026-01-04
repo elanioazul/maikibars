@@ -1,0 +1,18 @@
+@import "../../styles//variables.scss";
+
+// .square {
+//   height: 50%;
+//   border: 1px solid red;
+// }
+
+.header{
+  height: $header-height;
+  background-color: rgba(255, 0, 0, 0.5);
+
+  @media only screen and (min-width: 1024px) {
+    height: $header-height * 2;
+  }
+}
+
+
+

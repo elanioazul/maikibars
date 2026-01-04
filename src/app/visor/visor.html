@@ -1,0 +1,33 @@
+<div class="absolute h-full w-full container">
+  <app-visor-header class="absolute top-0 z-4 w-full header"></app-visor-header>
+
+  <div class="absolute top-0 z-1 grid grid-nogutter h-full w-full" style="pointer-events: none;">
+    <div class="flex justify-content-start col-4 square">
+
+    </div>
+    <div class="flex justify-content-center col-4 square">
+      <div class="flex align-items-end">
+      </div>
+    </div>
+    <div class="flex justify-content-end col-4 square">
+
+    </div>
+    <div class="flex align-items-end justify-content-start col-4 square">
+
+    </div>
+    <div class="flex align-items-end justify-content-center col-4 square">
+
+    </div>
+    <div class="flex align-items-end justify-content-end col-4 square">
+      <div class="relative flex flex-row justify-content-end align-items-end p-4 gap-1 flex-wrap">
+
+      </div>
+      <div #overlay class="ol-overlay-overlay hidden">
+        <div><code class="overflow-y-auto block" style="max-height: 10em;" #overlaycontent></code></div>
+      </div>
+    </div>
+  </div>
+  <app-visor-map></app-visor-map>
+
+</div>
+
