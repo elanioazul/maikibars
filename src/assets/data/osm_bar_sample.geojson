@@ -1,0 +1,119 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2026-01-02T17:05:59Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/26808561",
+        "addr:city": "Madrid",
+        "addr:housenumber": "2",
+        "addr:postcode": "28015",
+        "addr:street": "Plaza de Cristino Martos",
+        "amenity": "bar",
+        "email": "hola@murcafe.com",
+        "name": "Mür Café",
+        "phone": "+34 91 139 98 09",
+        "website": "http://murcafe.es/",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.7122038,
+          40.4256477
+        ]
+      },
+      "id": "node/26808561"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12452943829",
+        "addr:housenumber": "24",
+        "addr:street": "Calle de Cea Bermúdez",
+        "amenity": "bar",
+        "check_date": "2024-12-26",
+        "name": "Fran",
+        "outdoor_seating": "yes",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.7085304,
+          40.4389519
+        ]
+      },
+      "id": "node/12452943829"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13236601401",
+        "addr:housenumber": "114",
+        "addr:postcode": "28030",
+        "addr:street": "Avenida del Doctor García Tapia",
+        "amenity": "bar",
+        "cuisine": "spanish",
+        "level": "0",
+        "name": "Casa Mónica - Cafetería - Cervecería",
+        "website": "https://www.casa-monica.es/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.6487424,
+          40.4121802
+        ]
+      },
+      "id": "node/13236601401"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13307745002",
+        "addr:housenumber": "8",
+        "addr:street": "Calle del Áncora",
+        "amenity": "bar",
+        "contact:instagram": "coppeliamadrid",
+        "email": "coppeliamadrid@gmail.com",
+        "name": "Coppelia Madrid",
+        "phone": "+34 605 04 05 05",
+        "website:menu": "https://coppeliamadrid.wixsite.com/coppeliamadrid"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.6927269,
+          40.4027952
+        ]
+      },
+      "id": "node/13307745002"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13308839709",
+        "addr:housenumber": "59",
+        "addr:street": "Calle de Maldonado",
+        "amenity": "bar",
+        "contact:phone": "+34 916 774 120",
+        "name": "Taberna La Aliñá",
+        "opening_hours": "Mo-Th 11:00-23:00; Fr 11:00-24:00; Sa 12:00-24:00; Su off",
+        "source": "survey",
+        "website": "https://es.restaurantguru.com/La-Alina-Madrid"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.6774826,
+          40.4336733
+        ]
+      },
+      "id": "node/13308839709"
+    },
+  ]
+}

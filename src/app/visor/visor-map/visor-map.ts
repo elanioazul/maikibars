@@ -5,6 +5,11 @@ import maplibregl, {
   StyleSpecification,
   VideoSource,
 } from 'maplibre-gl';
+
+
+const icon = 'assets/map-pin-plus-inside.png';
+const geojson = 'assets/data/maikibars.geojson';
+
 @Component({
   selector: 'app-visor-map',
   imports: [],
@@ -44,15 +49,33 @@ export class VisorMap {
     this.map = new Map({
       container: 'map',
       style: this.style,
-      zoom: 8,
+      zoom: 14,
       minZoom: 0,
       maxZoom: 23,
       pitch: 0,
       bearing: 0,
       maxPitch: 85,
-      center: [-3.97300533, 40.79907993],
+      center: [-3.702993, 40.405459],
       hash: false,
       attributionControl: false,
     });
+    this.map.on('load', async () => {
+      const image = await this.map.loadImage(icon);
+      this.map.addImage('custom-marker', image.data);
+
+      this.map.addSource('maikibars-source', {
+        type: 'geojson',
+        data:geojson
+      })
+
+      this.map.addLayer({
+        'id': 'maikibars-layer',
+        'type': 'symbol',
+        'source': 'maikibars-source',
+        'layout': {
+          'icon-image': 'custom-marker'
+        }
+      })
+    })
   }
 }
