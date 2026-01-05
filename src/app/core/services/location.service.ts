@@ -1,6 +1,6 @@
 import { httpResource } from '@angular/common/http';
-import { computed, Injectable } from '@angular/core';
-import { FeatureCollection } from 'geojson';
+import { computed, Injectable, signal } from '@angular/core';
+import { FeatureCollection, Position } from 'geojson';
 
 
 @Injectable({
@@ -9,14 +9,16 @@ import { FeatureCollection } from 'geojson';
 export class LocationService {
 
   private readonly geojsonPath = 'assets/data/maikibars.geojson';
-
-
-  // This creates a Resource signal
+  //Resource signal
   readonly maikibarsResource = httpResource<FeatureCollection>(() => this.geojsonPath);
 
   readonly bars = this.maikibarsResource.value;
   readonly isLoading = this.maikibarsResource.isLoading;
   readonly error = this.maikibarsResource.error;
-
   readonly barsFeatures = computed(() => this.bars()?.features ?? []);
+
+  readonly mapTarget = signal<Position | null>(null);
+  setTarget(coords: Position) {
+    this.mapTarget.set(coords);
+  }
 }

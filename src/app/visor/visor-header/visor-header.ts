@@ -3,7 +3,7 @@ import {  ScreenSizeStore } from '../../core/store/screensize.state';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
-import { LocationService } from '../../core/services/location-service.service';
+import { LocationService } from '../../core/services/location.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
@@ -30,7 +30,7 @@ export class VisorHeader {
       { initialValue: '' }
   );
 
-filteredBars = computed(() => {
+  filteredBars = computed(() => {
     const rawValue = this.searchTerm();
 
     if (typeof rawValue !== 'string') return [];
@@ -64,7 +64,7 @@ filteredBars = computed(() => {
   onBarSelected(event: any): void {
       const selectedBar = event.option.value as Feature<Point>;
       console.log('Selected Bar Feature:', selectedBar.properties!['name']);
-      // You could also emit this to the map to center on these coordinates
+      this.locationsService.setTarget(selectedBar.geometry.coordinates);
     }
 
 }
