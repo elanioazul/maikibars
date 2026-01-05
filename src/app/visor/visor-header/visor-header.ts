@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { startWith } from 'rxjs';
 import { Feature, Point } from 'geojson';
+import { MapService } from '../../core/services/map.service';
 
 @Component({
   selector: 'app-visor-header',
@@ -22,6 +23,7 @@ import { Feature, Point } from 'geojson';
 export class VisorHeader {
   readonly screenStore = inject(ScreenSizeStore);
   readonly locationsService = inject(LocationService);
+  readonly mapService = inject(MapService);
 
   searchControl = new FormControl('', { nonNullable: true });
 
@@ -62,9 +64,10 @@ export class VisorHeader {
   }
 
   onBarSelected(event: any): void {
-      const selectedBar = event.option.value as Feature<Point>;
-      console.log('Selected Bar Feature:', selectedBar.properties!['name']);
-      this.locationsService.setTarget(selectedBar.geometry.coordinates);
-    }
+    const selectedBar = event.option.value as Feature<Point>;
+    console.log('Selected Bar Feature:', selectedBar.properties!['name']);
+    this.locationsService.setTarget(selectedBar.geometry.coordinates as [number, number]);
+    this.mapService.flyTo(selectedBar.geometry.coordinates as [number, number]);
+  }
 
 }

@@ -6,6 +6,7 @@ import maplibregl, {
   StyleSpecification,
   VideoSource,
 } from 'maplibre-gl';
+import { Position } from 'geojson';
 @Injectable({
   providedIn: 'root',
 })
@@ -34,6 +35,19 @@ export class MapService {
     this.map = new Map(mapOptions);
 
     return this.map;
+  }
+
+  flyTo(coords: [number, number]): void {
+    this.map!.flyTo({
+      center: coords,
+      zoom: 15,
+      essential: true,
+      padding: { top: 100 },
+
+      bearing: 45,
+      pitch: 20,
+      speed: 0.5
+    });
   }
 
 }
