@@ -1,0 +1,36 @@
+@if (flayingFeatureStore.selectedBar(); as bar) {
+  <div class="info-card-overlay"
+       [class.mobile-sheet]="screenStore.size() === 'mobile' || screenStore.size() === 'tablet'">
+
+    <mat-card class="bar-card mat-elevation-z8">
+      @if (screenStore.isMobile()) {
+        <div class="mobile-handle"></div>
+      }
+      <mat-card-header class="justify-content-between">
+        <mat-card-title>{{ bar.properties?.['name'] || 'Unnamed Bar' }}</mat-card-title>
+        <button mat-icon-button (click)="flayingFeatureStore.close()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-card-header>
+
+      <mat-card-content class="flex-grow-1">
+        <p><strong>Descripción:</strong> {{ bar.properties?.['desc'] }}</p>
+        <p><strong>Dirección:</strong> {{ bar.properties?.['address'] }}</p>
+        <p><strong>Precio:</strong> {{ bar.properties?.['price'] }}</p>
+      </mat-card-content>
+
+      <mat-card-actions align="end" class="nav-buttons">
+        <button mat-mini-fab color="primary"
+                [disabled]="!flayingFeatureStore.hasPrevious()"
+                (click)="flayingFeatureStore.previous()">
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+        <button mat-mini-fab color="primary"
+                [disabled]="!flayingFeatureStore.hasNext()"
+                (click)="flayingFeatureStore.next()">
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+}

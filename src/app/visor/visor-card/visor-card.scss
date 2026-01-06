@@ -1,0 +1,66 @@
+// bar-info-card.component.scss
+
+// 1. Define the Slide-Up Keyframes
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.info-card-overlay {
+  position: absolute;
+  z-index: 100;
+  pointer-events: auto;
+
+  // Apply the animation whenever the element enters the DOM via @if
+  animation: slideUp 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+
+  // Desktop/Laptop Floating Style
+  &:not(.mobile-sheet) {
+    top: 100px;
+    left: 20px;
+    width: 350px;
+  }
+
+  // 2. Mobile & Tablet "Bottom Sheet" Style
+  &.mobile-sheet {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 45vh;
+
+    .bar-card {
+      height: 100%;
+      background-color: #fce4ec; // Light Magenta (Pink 50)
+
+      // Straight bottom corners, rounded top
+      border-radius: 28px 28px 0 0 !important;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+.nav-buttons {
+  padding: 16px;
+  gap: 12px;
+
+  // Ensure buttons stay at the very bottom
+  margin-top: auto;
+}
+
+// Optional: Subtle handle bar for the mobile sheet
+.mobile-handle {
+  width: 40px;
+  height: 4px;
+  background: rgba(0,0,0,0.1);
+  border-radius: 2px;
+  margin: 8px auto 0;
+}
