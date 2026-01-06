@@ -31,6 +31,7 @@
     "@ngrx/signals": "^21.0.1",
     "@types/geojson": "^7946.0.16",
     "maplibre-gl": "^5.15.0",
+    "material-symbols": "^0.40.2",
     "primeflex": "^4.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

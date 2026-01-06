@@ -8,15 +8,20 @@
       }
       <mat-card-header class="justify-content-between">
         <mat-card-title>{{ bar.properties?.['name'] || 'Unnamed Bar' }}</mat-card-title>
-        <button mat-icon-button (click)="flayingFeatureStore.close()">
+        <button mat-icon-button (click)="closeCard()">
           <mat-icon>close</mat-icon>
         </button>
       </mat-card-header>
 
       <mat-card-content class="flex-grow-1">
-        <p><strong>Descripción:</strong> {{ bar.properties?.['desc'] }}</p>
-        <p><strong>Dirección:</strong> {{ bar.properties?.['address'] }}</p>
+        <div class="flex justify-content-between">
+          <p class="flex-grow-1 max-w-18rem"><strong>Dirección:</strong> {{ bar.properties?.['address'] }}</p>
+          <span class="flex-none pt-3 material-symbols-outlined no-fill text-primary cursor-pointer pl-1"
+            (click)="copyToClipboard(bar.properties?.['address'])">content_copy
+          </span>
+        </div>
         <p><strong>Precio:</strong> {{ bar.properties?.['price'] }}</p>
+        <p><strong>Descripción:</strong> {{ bar.properties?.['desc'] }}</p>
       </mat-card-content>
 
       <mat-card-actions align="end" class="nav-buttons">

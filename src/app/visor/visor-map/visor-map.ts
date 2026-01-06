@@ -10,6 +10,8 @@ import { LocationService } from '../../core/services/location.service';
 import { MapService } from '../../core/services/map.service';
 import { style } from '../../core/consts/map-style';
 import { FlayingFeatureStore } from '../../core/store/flyingFeature.state';
+import { pulsingDot } from '../../core/consts/dotPulse';
+import { Feature, GeoJsonProperties, Geometry } from 'geojson';
 
 
 const icon = 'assets/map-pin-plus-inside.png';
@@ -45,6 +47,7 @@ export class VisorMap implements OnDestroy, AfterViewInit {
         if (bar.geometry.type === 'Point') {
           const coords = bar.geometry.coordinates as [number, number];
           this.mapService.flyTo(coords as [number, number]);
+          this.mapService.addPulseToBarSelected(bar);
         }
       }
     })
@@ -91,6 +94,25 @@ export class VisorMap implements OnDestroy, AfterViewInit {
       if (currentData) {
         (this.mapService.map!.getSource('maikibars-source') as GeoJSONSource).setData(currentData);
       }
+
+      this.mapService.map!.addImage('pulsing-dot', pulsingDot as any);
+
+      // 3. Setup the layer to use it
+      this.mapService.map!.addSource('selected-bar-source', {
+        type: 'geojson',
+        data: { type: 'FeatureCollection', features: [] }
+      });
+
+      this.mapService.map!.addLayer({
+        id: 'selected-bar-pulse',
+        type: 'symbol',
+        source: 'selected-bar-source',
+        layout: {
+          'icon-image': 'pulsing-dot',
+          'icon-allow-overlap': true
+        }
+      }, 'maikibars-layer'); // Place it BELOW maikibars markers
+
     })
 
     this.mapService.pointerManagement();

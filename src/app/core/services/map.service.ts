@@ -6,7 +6,7 @@ import maplibregl, {
   StyleSpecification,
   VideoSource,
 } from 'maplibre-gl';
-import { Feature, Point, Position } from 'geojson';
+import { Feature, GeoJsonProperties, Geometry, Point, Position } from 'geojson';
 import { FlayingFeatureStore } from '../store/flyingFeature.state';
 
 @Injectable({
@@ -72,6 +72,26 @@ export class MapService {
       pitch: 20,
       speed: 0.5
     });
+  }
+
+  addPulseToBarSelected(bar: Feature<Geometry, GeoJsonProperties>): void {
+      const pulseSource = this.map!.getSource('selected-bar-source') as GeoJSONSource;
+      if (pulseSource) {
+        pulseSource.setData({
+          type: 'FeatureCollection',
+          features: [bar]
+        });
+      }
+  }
+
+  clearPulse(): void {
+      const pulseSource = this.map!.getSource('selected-bar-source') as GeoJSONSource;
+      if (pulseSource) {
+        pulseSource.setData({
+          type: 'FeatureCollection',
+          features: []
+        });
+      }
   }
 
 }
