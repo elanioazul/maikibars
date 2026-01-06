@@ -13,6 +13,7 @@ import { startWith } from 'rxjs';
 import { Feature, Point } from 'geojson';
 import { MapService } from '../../core/services/map.service';
 import { HighlightPipe } from '../../core/pipes/highlight-pipe';
+import { FlayingFeatureStore } from '../../core/store/flyingFeature.state';
 
 @Component({
   selector: 'app-visor-header',
@@ -23,6 +24,7 @@ import { HighlightPipe } from '../../core/pipes/highlight-pipe';
 })
 export class VisorHeader {
   readonly screenStore = inject(ScreenSizeStore);
+  readonly flyingFeatureStore = inject(FlayingFeatureStore);
   readonly locationsService = inject(LocationService);
   readonly mapService = inject(MapService);
 
@@ -66,9 +68,7 @@ export class VisorHeader {
 
   onBarSelected(event: any): void {
     const selectedBar = event.option.value as Feature<Point>;
-    console.log('Selected Bar Feature:', selectedBar.properties!['name']);
-    //this.locationsService.setTarget(selectedBar.geometry.coordinates as [number, number]);
-    this.mapService.flyTo(selectedBar.geometry.coordinates as [number, number]);
+    this.flyingFeatureStore.handleFeatureClick(selectedBar);
   }
 
 }
