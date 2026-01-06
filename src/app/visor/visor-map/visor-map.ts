@@ -14,7 +14,7 @@ import { pulsingDot } from '../../core/consts/dotPulse';
 import { Feature, GeoJsonProperties, Geometry } from 'geojson';
 
 
-const icon = 'assets/map-pin-plus-inside.png';
+const icon = 'assets/gps.png';
 
 @Component({
   selector: 'app-visor-map',
