@@ -11,7 +11,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 1,
         "name": "La embajada de embajadores",
         "address": "C. de Embajadores, 66, Centro, 28012 Madrid",
         "desc": "me flipa, lo vale todo. Los bocadillos de escándalo. Chicas wapas por la zona",
@@ -28,7 +27,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 2,
         "name": "Ataca paca",
         "address": "Calle de Arganzuela, 20, Centro, 28005 Madrid",
         "desc": "buenos tiempos alli cuando lo pasabamos bien con pilar y lobo",
@@ -45,7 +43,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 3,
         "name": "Casa Mingo",
         "address": "P.º de la Florida, 34, Moncloa - Aravaca, 28008 Madrid",
         "desc": "asturiano de antaño, de esos con caspa en la sidra. Paciencia los findes que se peta y hay cola",
@@ -62,7 +59,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 4,
         "name": "El viajero",
         "address": "Pl. de la Cebada, 11, Centro, 28005 Madrid",
         "desc": "postureo en latina. todo correcto y bien",
@@ -73,6 +69,22 @@
         "coordinates": [
           -3.710179,
           40.411644
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cervecería Churruca",
+        "address": "C. de Churruca, 21, Centro, 28004 Madrid",
+        "desc": "buen bar madrieño con olor a frintaga",
+        "price": "buen precios, precios economicos, incluso para estudiantes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.701305005753515,
+          40.42822575121807
         ]
       }
     }
