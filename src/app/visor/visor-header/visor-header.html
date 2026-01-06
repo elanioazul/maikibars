@@ -26,7 +26,7 @@
         @if (searchTerm() && typeof searchTerm() === 'string' && filteredBars().length === 0) {
             <mat-option disabled class="no-results">
               <mat-icon>search_off</mat-icon>
-              <span>No bares encontrados por "{{ searchTerm() }}"</span>
+              <span>No resultados por "{{ searchTerm() }}"</span>
             </mat-option>
           }
       </mat-autocomplete>
