@@ -7,7 +7,7 @@
 
 .header{
   height: $header-height;
-  background-color: whitesmoke;
+  background-color: $primary-color;
 
   @media only screen and (min-width: 1024px) {
     //height: $header-height * 2;

@@ -1,4 +1,4 @@
-// bar-info-card.component.scss
+@import "../../../styles//variables.scss";
 
 // 1. Define the Slide-Up Keyframes
 @keyframes slideUp {
@@ -36,7 +36,7 @@
 
     .bar-card {
       height: 100%;
-      background-color: #fce4ec; // Light Magenta (Pink 50)
+      background-color: $primary-color;
 
       // Straight bottom corners, rounded top
       border-radius: 28px 28px 0 0 !important;
