@@ -66,7 +66,7 @@ export class MapService {
       center: coords,
       zoom: 15,
       essential: true,
-      padding: { top: 100 },
+      padding: { top: 10 },
 
       //bearing: 45,
       pitch: 20,
