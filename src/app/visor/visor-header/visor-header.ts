@@ -12,11 +12,12 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { startWith } from 'rxjs';
 import { Feature, Point } from 'geojson';
 import { MapService } from '../../core/services/map.service';
+import { HighlightPipe } from '../../core/pipes/highlight-pipe';
 
 @Component({
   selector: 'app-visor-header',
   imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule,
-    MatIconModule, MatButtonModule, MatAutocompleteModule, CommonModule],
+    MatIconModule, MatButtonModule, MatAutocompleteModule, CommonModule, HighlightPipe],
   templateUrl: './visor-header.html',
   styleUrl: './visor-header.scss',
 })

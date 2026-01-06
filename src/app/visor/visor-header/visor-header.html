@@ -19,7 +19,7 @@
         (optionSelected)="onBarSelected($event)">
         @for (bar of filteredBars(); track bar.properties?.['name']) {
           <mat-option [value]="bar">
-            {{ bar.properties?.['name'] || 'Unnamed Bar' }}
+            <span [innerHTML]="bar.properties?.['name'] | highlight: searchTerm()"></span>
           </mat-option>
         }
       </mat-autocomplete>
