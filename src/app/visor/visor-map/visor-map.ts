@@ -9,6 +9,7 @@ import maplibregl, {
 import { LocationService } from '../../core/services/location.service';
 import { MapService } from '../../core/services/map.service';
 import { style } from '../../core/consts/map-style';
+import { FlayingFeatureStore } from '../../core/store/flyingFeature.state';
 
 
 const icon = 'assets/map-pin-plus-inside.png';
@@ -24,15 +25,26 @@ export class VisorMap implements OnDestroy, AfterViewInit {
   @ViewChild('map', { static: false }) mapContainer!: ElementRef<HTMLDivElement>;
 
   readonly locationsService = inject(LocationService);
+  readonly flyingFeatureStore = inject(FlayingFeatureStore);
   readonly mapService = inject(MapService);
 
   constructor() {
     effect(() => {
+      //carga de data a la source creada when load event
       const data = this.locationsService.bars();
       if (data && this.mapService.map && this.mapService.map.isStyleLoaded()) {
         const source = this.mapService.map.getSource('maikibars-source') as GeoJSONSource;
         if (source) {
           source.setData(data);
+        }
+      }
+    })
+    effect(() => {
+      const bar = this.flyingFeatureStore.selectedBar();
+      if (bar && this.mapService.map!) {
+        if (bar.geometry.type === 'Point') {
+          const coords = bar.geometry.coordinates as [number, number];
+          this.mapService.flyTo(coords as [number, number]);
         }
       }
     })
@@ -80,6 +92,9 @@ export class VisorMap implements OnDestroy, AfterViewInit {
         (this.mapService.map!.getSource('maikibars-source') as GeoJSONSource).setData(currentData);
       }
     })
+
+    this.mapService.pointerManagement();
+    this.mapService.clickManagement();
   }
 
   ngOnDestroy(): void {

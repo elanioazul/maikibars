@@ -66,7 +66,7 @@ export class VisorHeader {
   onBarSelected(event: any): void {
     const selectedBar = event.option.value as Feature<Point>;
     console.log('Selected Bar Feature:', selectedBar.properties!['name']);
-    this.locationsService.setTarget(selectedBar.geometry.coordinates as [number, number]);
+    //this.locationsService.setTarget(selectedBar.geometry.coordinates as [number, number]);
     this.mapService.flyTo(selectedBar.geometry.coordinates as [number, number]);
   }
 

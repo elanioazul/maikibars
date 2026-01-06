@@ -17,8 +17,8 @@ export class LocationService {
   readonly error = this.maikibarsResource.error;
   readonly barsFeatures = computed(() => this.bars()?.features ?? []);
 
-  readonly mapTarget = signal<[number, number] | null>(null);
-  setTarget(coords: [number, number]) {
-    this.mapTarget.set(coords);
-  }
+  // readonly mapTarget = signal<[number, number] | null>(null);
+  // setTarget(coords: [number, number]) {
+  //   this.mapTarget.set(coords);
+  // }
 }

@@ -1,4 +1,4 @@
-import { Injectable, signal, WritableSignal } from '@angular/core';
+import { inject, Injectable, signal, WritableSignal } from '@angular/core';
 import maplibregl, {
   GeoJSONSource,
   Map,
@@ -6,11 +6,14 @@ import maplibregl, {
   StyleSpecification,
   VideoSource,
 } from 'maplibre-gl';
-import { Position } from 'geojson';
+import { Feature, Point, Position } from 'geojson';
+import { FlayingFeatureStore } from '../store/flyingFeature.state';
+
 @Injectable({
   providedIn: 'root',
 })
 export class MapService {
+  readonly flyingFeatureStore = inject(FlayingFeatureStore);
   //public map: WritableSignal<Map | null> = signal<Map | null>(null);
   public map: null | Map = null;
 
@@ -35,6 +38,27 @@ export class MapService {
     this.map = new Map(mapOptions);
 
     return this.map;
+  }
+
+  pointerManagement(): void {
+    this.map!.on('mouseenter', 'maikibars-layer', () => {
+      this.map!.getCanvas().style.cursor = 'pointer';
+    });
+    this.map!.on('mouseleave', 'maikibars-layer', () => {
+      this.map!.getCanvas().style.cursor = '';
+    });
+  }
+
+  clickManagement(): void {
+    this.map!.on('click', 'maikibars-layer', (e) => {
+      if (e.features && e.features.length > 0) {
+        // MapLibre returns features as a special internal type,
+        // cast to GeoJSON Feature
+
+        const clickedFeature = e.features[0] as unknown as Feature<Point>;
+        this.flyingFeatureStore.handleFeatureClick(clickedFeature);
+      }
+    });
   }
 
   flyTo(coords: [number, number]): void {
