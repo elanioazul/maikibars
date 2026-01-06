@@ -68,7 +68,7 @@ export class MapService {
       essential: true,
       padding: { top: 100 },
 
-      bearing: 45,
+      //bearing: 45,
       pitch: 20,
       speed: 0.5
     });
