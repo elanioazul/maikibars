@@ -1,0 +1,23 @@
+::ng-deep .mat-mdc-option strong {
+  color: #d81b60;
+  font-weight: 800;
+}
+
+.search-field {
+  width: 100%;
+  max-width: 400px;
+
+  .custom-input-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
+    vertical-align: middle;
+    padding-left: 10px;
+  }
+}
+
+[matPrefix] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

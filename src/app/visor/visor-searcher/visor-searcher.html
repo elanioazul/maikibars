@@ -1,0 +1,26 @@
+<mat-form-field appearance="outline" class="search-field">
+  <mat-label>Busca por nombre</mat-label>
+  <img matPrefix src="assets/stroller_32px.png" alt="stroller" class="custom-input-icon">
+  <input type="text" matInput [formControl]="searchControl" [matAutocomplete]="auto">
+
+  @if (searchControl.value) {
+  <button matSuffix mat-icon-button aria-label="Clear" (click)="searchControl.setValue('')">
+    <mat-icon>close</mat-icon>
+  </button>
+  }
+
+  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="handleBarSelection($event)">
+    @for (bar of filteredBars(); track bar.properties?.['name']) {
+    <mat-option [value]="bar">
+      <span [innerHTML]="bar.properties?.['name'] | highlight: searchTerm()"></span>
+    </mat-option>
+    }
+
+    @if (searchTerm() && typeof searchTerm() === 'string' && filteredBars().length === 0) {
+    <mat-option disabled class="no-results">
+      <mat-icon>search_off</mat-icon>
+      <span>No resultados por "{{ searchTerm() }}"</span>
+    </mat-option>
+    }
+  </mat-autocomplete>
+</mat-form-field>

@@ -26,6 +26,7 @@ export const ScreenSizeStore = signalStore(
   withComputed(({ size, innerWidth }) => ({
     isMobile: computed(() => size() === SCREEN_SIZE.Mobile),
     isTablet: computed(() => size() === SCREEN_SIZE.Tablet),
+    isDesktop: computed(() => size() === SCREEN_SIZE.Desktop),
   })),
 
   // 2. Methods & Side Effects

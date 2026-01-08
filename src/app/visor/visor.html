@@ -29,5 +29,8 @@
   </div> -->
   <app-visor-map></app-visor-map>
   <app-visor-card></app-visor-card>
+  @if (screenStore.isDesktop()) {
+    <app-visor-searcher class="searcher" (selection)="onBarSelected($event)"></app-visor-searcher>
+  }
 </div>
 

@@ -13,6 +13,21 @@
     //height: $header-height * 2;
   }
 }
+.searcher {
+  height: $header-height;
+  background-color: $primary-color;
+
+  position: absolute;
+  z-index: 100;
+  pointer-events: auto;
+  top: 100px;
+  right: 20px;
+  width: 350px;
+
+  @media only screen and (min-width: 1024px) {
+    //height: $header-height * 2;
+  }
+}
 
 
 

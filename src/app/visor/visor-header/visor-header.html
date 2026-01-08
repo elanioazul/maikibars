@@ -1,35 +1,10 @@
 <div class="h-full p-2 flex align-items-center justify-content-center">
-  <mat-form-field appearance="outline" class="search-field">
-    <mat-label>Busca por nombre</mat-label>
-    <img matPrefix src="assets/stroller_32px.png" alt="stroller" class="custom-input-icon">
-      <input
-        type="text"
-        matInput
-        [formControl]="searchControl"
-        [matAutocomplete]="auto">
-
-      @if (searchControl.value) {
-        <button matSuffix mat-icon-button aria-label="Clear" (click)="searchControl.setValue('')">
-          <mat-icon>close</mat-icon>
-        </button>
-      }
-
-      <mat-autocomplete
-        #auto="matAutocomplete"
-        [displayWith]="displayFn"
-        (optionSelected)="onBarSelected($event)">
-        @for (bar of filteredBars(); track bar.properties?.['name']) {
-          <mat-option [value]="bar">
-            <span [innerHTML]="bar.properties?.['name'] | highlight: searchTerm()"></span>
-          </mat-option>
-        }
-
-        @if (searchTerm() && typeof searchTerm() === 'string' && filteredBars().length === 0) {
-            <mat-option disabled class="no-results">
-              <mat-icon>search_off</mat-icon>
-              <span>No resultados por "{{ searchTerm() }}"</span>
-            </mat-option>
-          }
-      </mat-autocomplete>
-  </mat-form-field>
+  <div #searcher>
+    <app-visor-searcher
+      (selection)="onBarSelected($event)"
+      [class.hidden]="screenStore.isDesktop()"
+    >
+    </app-visor-searcher>
+  </div>
+  <h1 class="brand" [class.hidden]="!screenStore.isDesktop()">MAIKIBars</h1>
 </div>
