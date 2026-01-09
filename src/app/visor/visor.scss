@@ -1,9 +1,9 @@
 @import "../../styles//variables.scss";
 
-// .square {
-//   height: 50%;
-//   border: 1px solid red;
-// }
+.square {
+  height: 50%;
+  border: 1px solid red;
+}
 
 .header{
   height: $header-height;
@@ -20,7 +20,7 @@
   z-index: 100;
   pointer-events: auto;
   top: 100px;
-  right: 20px;
+  left: 20px;
   width: 350px;
 
   @media only screen and (min-width: 1024px) {

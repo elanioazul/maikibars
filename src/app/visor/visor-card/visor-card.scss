@@ -22,7 +22,7 @@
 
   // Desktop/Laptop Floating Style
   &:not(.mobile-sheet) {
-    top: 100px;
+    bottom: 100px;
     left: 20px;
     width: 350px;
   }
