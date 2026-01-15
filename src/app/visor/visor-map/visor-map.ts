@@ -8,7 +8,7 @@ import maplibregl, {
 } from 'maplibre-gl';
 import { LocationService } from '../../core/services/location.service';
 import { MapService } from '../../core/services/map.service';
-import { style } from '../../core/consts/map-style';
+import * as pinkyStyle from '../../core/consts/pink-style.json';
 import { FlayingFeatureStore } from '../../core/store/flyingFeature.state';
 import { pulsingDot } from '../../core/consts/dotPulse';
 import { Feature, GeoJsonProperties, Geometry } from 'geojson';
@@ -55,7 +55,7 @@ export class VisorMap implements OnDestroy, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.mapService.createMap(this.mapContainer.nativeElement, {
-      style: style,
+      style: pinkyStyle as unknown as StyleSpecification,
       center: [-3.701188, 40.402187],
       zoom: 14,
       minZoom: 0,

@@ -25,13 +25,13 @@ export const pulsingDot = {
     // Draw Pulse
     context.beginPath();
     context.arc(this.width / 2, this.height / 2, outerRadius, 0, Math.PI * 2);
-    context.fillStyle = `rgba(255, 30, 150, ${1 - t})`;
+    context.fillStyle = `rgba(210, 8, 250, ${1 - t})`;
     context.fill();
 
     // Draw Center
     context.beginPath();
     context.arc(this.width / 2, this.height / 2, radius, 0, Math.PI * 2);
-    context.fillStyle = 'rgba(255, 30, 150, 1)';
+    context.fillStyle = 'rgb(210, 8, 250)';
     context.strokeStyle = 'white';
     context.lineWidth = 2;
     context.fill();
