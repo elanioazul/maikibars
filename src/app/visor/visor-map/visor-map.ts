@@ -15,6 +15,27 @@ import { Feature, GeoJsonProperties, Geometry } from 'geojson';
 
 
 const icon = 'assets/gps.png';
+const style = {
+  "version": 8,
+  //"glyphs": 'https://api.mapbox.com/fonts/v1/{fontstack}/{range}.pbf', // Mapbox font endpoint
+  "glyphs": 'https://fonts.openmaptiles.org/{fontstack}/{range}.pbf', // openmaptiles/fonts  endpoint
+  "sources": {
+    "osm": {
+        "type": "raster",
+        "tiles": ["https://a.tile.openstreetmap.org/{z}/{x}/{y}.png"],
+        "tileSize": 256,
+        "attribution": "&copy; OpenStreetMap Contributors",
+        "maxzoom": 19
+    }
+  },
+  "layers": [
+    {
+      "id": "osm",
+      "type": "raster",
+      "source": "osm" // This must match the source key above
+    }
+  ]
+};
 
 @Component({
   selector: 'app-visor-map',
