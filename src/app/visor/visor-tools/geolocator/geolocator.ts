@@ -2,7 +2,8 @@ import { Component, inject, signal } from '@angular/core';
 import { Tool } from '../warehouse/tool/tool';
 import { MapService } from 'src/app/core/services/map.service';
 import { Marker } from 'maplibre-gl';
-
+import { circle } from "@turf/circle";
+import { Units } from "@turf/helpers";
 @Component({
   selector: 'app-geolocator',
   imports: [],
@@ -30,9 +31,13 @@ export class Geolocator extends Tool {
           essential: true
         });
 
-        new Marker({ color: '#3495eb', draggable: false })
-          .setLngLat([longitude, latitude])
-          .addTo(this.mapService.map!);
+        const radius = 3; // meters
+        const options: { steps: number; units: Units } = {
+            steps: 64,
+            units: 'meters'
+        };
+
+        this.addCircleLyr(circle([longitude, latitude], radius, options))
 
         this.messageEvent.emit(false);
       },
@@ -46,5 +51,32 @@ export class Geolocator extends Tool {
         maximumAge: 0
       }
     );
+  }
+
+  addCircleLyr(circle: any): void {
+    this.mapService.map?.addSource('location-radius', {
+        type: 'geojson',
+        data: circle
+    });
+
+    this.mapService.map?.addLayer({
+        id: 'location-radius',
+        type: 'fill',
+        source: 'location-radius',
+        paint: {
+            'fill-color': '#8CCFFF',
+            'fill-opacity': 0.5
+        }
+    });
+
+    this.mapService.map?.addLayer({
+        id: 'location-radius-outline',
+        type: 'line',
+        source: 'location-radius',
+        paint: {
+            'line-color': '#0094ff',
+            'line-width': 3
+        }
+    });
   }
 }
