@@ -1,9 +1,9 @@
 import { Component, inject, signal } from '@angular/core';
 import { Tool } from '../warehouse/tool/tool';
 import { MapService } from 'src/app/core/services/map.service';
-import { Marker } from 'maplibre-gl';
 import { circle } from "@turf/circle";
 import { Units } from "@turf/helpers";
+import { timeout } from 'rxjs';
 @Component({
   selector: 'app-geolocator',
   imports: [],
@@ -40,6 +40,11 @@ export class Geolocator extends Tool {
         this.addCircleLyr(circle([longitude, latitude], radius, options))
 
         this.messageEvent.emit(false);
+        setTimeout(() => {
+          this.mapService.map?.removeLayer('location-radius')
+          this.mapService.map?.removeLayer('location-radius-outline')
+          this.mapService.map?.removeSource('location')
+        }, 8000)
       },
       (error) => {
         console.error('Error obtaining location', error);
@@ -54,7 +59,7 @@ export class Geolocator extends Tool {
   }
 
   addCircleLyr(circle: any): void {
-    this.mapService.map?.addSource('location-radius', {
+    this.mapService.map?.addSource('location', {
         type: 'geojson',
         data: circle
     });
@@ -62,7 +67,7 @@ export class Geolocator extends Tool {
     this.mapService.map?.addLayer({
         id: 'location-radius',
         type: 'fill',
-        source: 'location-radius',
+        source: 'location',
         paint: {
             'fill-color': '#8CCFFF',
             'fill-opacity': 0.5
@@ -72,7 +77,7 @@ export class Geolocator extends Tool {
     this.mapService.map?.addLayer({
         id: 'location-radius-outline',
         type: 'line',
-        source: 'location-radius',
+        source: 'location',
         paint: {
             'line-color': '#0094ff',
             'line-width': 3
