@@ -64,7 +64,7 @@ export class MapService {
   flyTo(coords: [number, number]): void {
     this.map!.flyTo({
       center: coords,
-      zoom: 15,
+      zoom: 18,
       essential: true,
       padding: { top: 10 },
 
