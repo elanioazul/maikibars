@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ITool, IToolConfig } from '../../../../core/interfaces/tool.interface';
 import { toolType } from '../../../../core/enums/tool-type';
 
@@ -12,6 +12,8 @@ export class Tool {
 
   public tool!: ITool;
   public icon?: string;
+
+  @Output() messageEvent = new EventEmitter<boolean>();
 
   public get config(): IToolConfig | null {
     const defaultConfig: IToolConfig = {

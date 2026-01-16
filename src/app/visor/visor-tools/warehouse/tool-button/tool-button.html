@@ -7,7 +7,9 @@
       matTooltipPosition="left"
       (click)="onClick()">
 
-      <mat-icon class="material-symbols-outlined">
+      <mat-icon
+        class="material-symbols-outlined"
+        [class.spinning]="isSpinning$ | async">
         {{ tool.config?.icon }}
       </mat-icon>
 

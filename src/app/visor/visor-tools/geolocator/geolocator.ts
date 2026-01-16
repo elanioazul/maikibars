@@ -12,15 +12,13 @@ import { Marker } from 'maplibre-gl';
 export class Geolocator extends Tool {
   mapService = inject(MapService);
 
-  isLocating = signal(false);
-
   override onClick(): void {
     if (!navigator.geolocation) {
           console.error('Geolocation is not supported by your browser');
           return;
     }
 
-    this.isLocating.set(true);
+    this.messageEvent.emit(true);
 
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -28,19 +26,19 @@ export class Geolocator extends Tool {
 
         this.mapService.map?.flyTo({
           center: [longitude, latitude],
-          zoom: 14,
+          zoom: 19,
           essential: true
         });
 
-        new Marker({ color: '#3495eb' })
+        new Marker({ color: '#3495eb', draggable: false })
           .setLngLat([longitude, latitude])
           .addTo(this.mapService.map!);
 
-        this.isLocating.set(false);
+        this.messageEvent.emit(false);
       },
       (error) => {
         console.error('Error obtaining location', error);
-        this.isLocating.set(false);
+        this.messageEvent.emit(false);
       },
       {
         enableHighAccuracy: true,
