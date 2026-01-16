@@ -32,7 +32,7 @@ export class Geolocator extends Tool {
           essential: true
         });
 
-        new Marker({ color: '#3f51b5' })
+        new Marker({ color: '#3495eb' })
           .setLngLat([longitude, latitude])
           .addTo(this.mapService.map!);
 
