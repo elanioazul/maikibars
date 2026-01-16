@@ -6,6 +6,27 @@ mat-icon {
   transition: transform 0.2s ease-out;
 }
 
+.desktop-fab {
+  /* Keep default material sizes */
+}
+
+.mobile-fab {
+  /* Scale down the button container */
+  width: 32px !important;
+  height: 32px !important;
+  
+  /* Ensure the icon scales down to fit the smaller button */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-fab mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+}
 
 .spinning {
   animation: rotate 2s linear infinite;

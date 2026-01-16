@@ -29,8 +29,14 @@
 }
 
 .toolsbar {
+  padding-top: 80px;
+  padding-bottom: 20px;
+  padding-right: 6px;
+
+  @media only screen and (min-width: 1024px) {
   padding-top: 100px;
   padding-bottom: 20px;
   padding-right: 20px;
+  }
 }
 

@@ -5,7 +5,8 @@
       [attr.aria-label]="tool.name"
       [matTooltip]="tool.config?.tooltipMessage"
       matTooltipPosition="left"
-      (click)="onClick()">
+      (click)="onClick()"
+      [class]="buttonScaleClass()">
 
       <mat-icon
         class="material-symbols-outlined"

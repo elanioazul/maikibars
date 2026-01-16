@@ -1,4 +1,4 @@
-import { Component, ComponentRef, computed, EventEmitter, Input, OnDestroy, OnInit, Output, signal, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ComponentRef, computed, EventEmitter, inject, Input, OnDestroy, OnInit, Output, signal, ViewChild, ViewContainerRef } from '@angular/core';
 import { ITool } from '../../../../core/interfaces/tool.interface';
 import { Tool } from '../tool/tool';
 import { toolsDic } from '../../../../core/consts/tools-dictionary';
@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CommonModule } from '@angular/common';
 import { map, Observable, pipe } from 'rxjs';
+import { ScreenSizeStore } from 'src/app/core/store/screensize.state';
 @Component({
   selector: 'app-tool-button',
   imports: [CommonModule, MatButtonModule, MatIconModule, MatTooltipModule],
@@ -14,6 +15,10 @@ import { map, Observable, pipe } from 'rxjs';
   styleUrl: './tool-button.scss',
 })
 export class ToolButton implements OnInit, OnDestroy {
+
+  readonly screenStore = inject(ScreenSizeStore);
+
+  buttonScaleClass = computed(() => this.screenStore.isMobile() ? 'mobile-fab' : 'desktop-fab');
 
   @Input() tool!: ITool;
   @Output() infoToBubble = new EventEmitter<boolean>();
