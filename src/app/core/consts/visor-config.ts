@@ -45,7 +45,7 @@ export const visorConfig: IReadVisor = {
           '@visor/visor-tools/pitch/pitch'
         ).then((c) => c.Pitch),
       config: {
-        icon: 'arrow_upward',
+        icon: 'navigation',
         tooltipMessage: 'adjust pitch',
         type: toolType.buttonTool,
         active: true,
