@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="flex justify-content-end col-4 square">
-
+      <app-tool-container [tools]="[tools[0],tools[1], tools[2]]" class="pointer-events-auto toolsbar" ></app-tool-container>
     </div>
     <div class="flex align-items-end justify-content-start col-4 square">
 
@@ -19,18 +19,13 @@
 
     </div>
     <div class="flex align-items-end justify-content-end col-4 square">
-      <div class="relative flex flex-row justify-content-end align-items-end p-4 gap-1 flex-wrap">
-
-      </div>
-      <div #overlay class="ol-overlay-overlay hidden">
-        <div><code class="overflow-y-auto block" style="max-height: 10em;" #overlaycontent></code></div>
-      </div>
+      <app-tool-container [tools]="[tools[3],tools[4]]" class="pointer-events-auto toolsbar" ></app-tool-container>
     </div>
   </div>
   <app-visor-map></app-visor-map>
   <app-visor-card></app-visor-card>
   @if (screenStore.isDesktop()) {
-    <app-visor-searcher class="searcher" (selection)="onBarSelected($event)"></app-visor-searcher>
+    <app-visor-searcher class="searcher shadow-5" (selection)="onBarSelected($event)"></app-visor-searcher>
   }
 </div>
 

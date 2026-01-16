@@ -6,16 +6,20 @@ import { ScreenSizeStore } from '../core/store/screensize.state';
 import { VisorSearcher } from './visor-searcher/visor-searcher';
 import { FlayingFeatureStore } from '../core/store/flyingFeature.state';
 import { Feature, Point } from 'geojson';
+import { ToolContainer } from './visor-tools/warehouse/tool-container/tool-container';
+import { visorConfig } from '../../app/core/consts/visor-config';
 
 @Component({
   selector: 'app-visor',
-  imports: [VisorMap, VisorHeader, VisorCard, VisorSearcher],
+  imports: [VisorMap, VisorHeader, VisorCard, VisorSearcher, ToolContainer],
   templateUrl: './visor.html',
   styleUrl: './visor.scss',
 })
 export class Visor {
   readonly screenStore = inject(ScreenSizeStore);
   readonly flyingFeatureStore = inject(FlayingFeatureStore);
+
+  tools = visorConfig.tools;
 
   constructor() {}
 

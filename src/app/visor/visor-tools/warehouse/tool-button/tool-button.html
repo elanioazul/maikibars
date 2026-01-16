@@ -1,0 +1,21 @@
+<div class="widget-wrapper p-0">
+  @if (tool) {
+    <button mat-mini-fab
+      color="primary"
+      [attr.aria-label]="tool.name"
+      [matTooltip]="tool.config?.tooltipMessage"
+      matTooltipPosition="left"
+      (click)="onClick()">
+
+      <mat-icon
+        class="material-symbols-outlined"
+        [class.spinning]="isSpinning$ | async"
+        [style.transform]="newComponent?.instance?.rotationStyle()">
+        {{ tool.config?.icon }}
+      </mat-icon>
+
+    </button>
+  }
+</div>
+
+<ng-container #container></ng-container>
