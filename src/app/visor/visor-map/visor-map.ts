@@ -77,8 +77,8 @@ export class VisorMap implements OnDestroy, AfterViewInit {
   ngAfterViewInit(): void {
     this.mapService.createMap(this.mapContainer.nativeElement, {
       style: pinkyStyle as unknown as StyleSpecification,
-      center: [-3.701188, 40.402187],
-      zoom: 14,
+      center: [-3.703380, 40.416849],
+      zoom: 15,
       minZoom: 0,
       maxZoom: 23,
       pitch: 0,
