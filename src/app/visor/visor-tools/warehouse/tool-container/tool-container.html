@@ -1,0 +1,20 @@
+<div class="flex flex-column align-items-end">
+  @for (tool of tools; track tool.id) {
+
+    @switch (tool.config?.type) {
+
+      @case ('buttonTool') {
+        <app-tool-button
+          [tool]="tool"
+          class="mat-elevation-z5 shadow-5 p-1">
+        </app-tool-button>
+      }
+
+      @case ('default') {
+      }
+    }
+
+  } @empty {
+
+  }
+</div>
