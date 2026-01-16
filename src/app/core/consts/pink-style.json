@@ -18,7 +18,7 @@
     "sources": {
         "openmaptiles": {
             "type": "vector",
-            "url": "http://localhost:3001/planetiler-madrid-just-city-osm",
+            "url": "",
             "attribution": "Protomaps © <a href=\"https://openstreetmap.org\">OpenStreetMap</a>"
         }
     },

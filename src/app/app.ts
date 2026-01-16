@@ -2,7 +2,8 @@ import { AfterViewInit, Component, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { PreloaderService } from './core/services/preloader.service';
-
+import { environment } from '@env/environment';
+import DisableDevtool from 'disable-devtool';
 @Component({
   selector: 'app-root',
   imports: [MatSlideToggleModule, RouterOutlet],
@@ -17,5 +18,8 @@ export class App implements AfterViewInit{
     setTimeout(() => {
       this.preloader.hide()
     }, 2000)
+    if (environment.production) {
+      DisableDevtool();
+    }
   }
 }

@@ -1,0 +1,14 @@
+services:
+  maikibars-f:
+    container_name: maikibars-angular
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - gameandgis-global-net
+    ports:
+      - 8083:90
+networks:
+  #le pongo la misma red pq los .mbtiles vienen de martin de gameandgis
+  gameandgis-global-net:
+    external: true

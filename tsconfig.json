@@ -16,7 +16,9 @@
     "module": "preserve",
     "baseUrl": ".",
     "paths": {
-			"@visor/*": ["src/app/visor/*"]
+			"@visor/*": ["src/app/visor/*"],
+      "@env": ["src/environments"],
+      "@env/*": ["src/environments/*"]
 		},
   },
   "angularCompilerOptions": {

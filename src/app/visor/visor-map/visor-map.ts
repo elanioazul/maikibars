@@ -12,7 +12,7 @@ import * as pinkyStyle from '../../core/consts/pink-style.json';
 import { FlayingFeatureStore } from '../../core/store/flyingFeature.state';
 import { pulsingDot } from '../../core/consts/dotPulse';
 import { Feature, GeoJsonProperties, Geometry } from 'geojson';
-
+import { environment } from '@env/environment';
 
 const icon = 'assets/gps.png';
 const style = {
@@ -75,6 +75,10 @@ export class VisorMap implements OnDestroy, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    pinkyStyle.sources.openmaptiles.url = environment.production ? 
+      environment.martinUrl + '/planetiler-madrid-just-city-osm' : 
+      environment.martinUrl + '/planetiler-madrid-just-city-osm';
+    
     this.mapService.createMap(this.mapContainer.nativeElement, {
       style: pinkyStyle as unknown as StyleSpecification,
       center: [-3.703380, 40.416849],
