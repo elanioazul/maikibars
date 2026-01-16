@@ -9,7 +9,8 @@
 
       <mat-icon
         class="material-symbols-outlined"
-        [class.spinning]="isSpinning$ | async">
+        [class.spinning]="isSpinning$ | async"
+        [style.transform]="newComponent?.instance?.rotationStyle()">
         {{ tool.config?.icon }}
       </mat-icon>
 

@@ -23,7 +23,7 @@ export class ToolButton implements OnInit, OnDestroy {
     read: ViewContainerRef,
   })
   private readonly container!: ViewContainerRef;
-  private newComponent!: ComponentRef<Tool>;
+  newComponent!: ComponentRef<Tool>;
 
   constructor() {}
 
@@ -44,12 +44,12 @@ export class ToolButton implements OnInit, OnDestroy {
       if (componentInstance) {
         this.newComponent = this.container.createComponent(componentInstance);
         this.newComponent.instance.tool = this.tool;
-        // this.newComponent.instance.messageEvent.subscribe(info => {
+        // this.newComponent.instance.isLocating.subscribe(info => {
         //   //this.infoToBubble.emit(info);
         //   console.log(info);
 
         // });
-        this.isSpinning$ = this.newComponent.instance.messageEvent.pipe(
+        this.isSpinning$ = this.newComponent.instance.isLocating.pipe(
           map(info => !!info)
         )
       }

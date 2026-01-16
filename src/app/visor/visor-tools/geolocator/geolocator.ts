@@ -19,7 +19,7 @@ export class Geolocator extends Tool {
           return;
     }
 
-    this.messageEvent.emit(true);
+    this.isLocating.emit(true);
 
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -39,7 +39,7 @@ export class Geolocator extends Tool {
 
         this.addCircleLyr(circle([longitude, latitude], radius, options))
 
-        this.messageEvent.emit(false);
+        this.isLocating.emit(false);
         setTimeout(() => {
           this.mapService.map?.removeLayer('location-radius')
           this.mapService.map?.removeLayer('location-radius-outline')
@@ -48,7 +48,7 @@ export class Geolocator extends Tool {
       },
       (error) => {
         console.error('Error obtaining location', error);
-        this.messageEvent.emit(false);
+        this.isLocating.emit(false);
       },
       {
         enableHighAccuracy: true,
