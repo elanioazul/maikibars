@@ -18,8 +18,8 @@ export class App implements AfterViewInit{
     setTimeout(() => {
       this.preloader.hide()
     }, 2000)
-    if (environment.production) {
-      DisableDevtool();
-    }
+    // if (environment.production) {
+    //   DisableDevtool();
+    // }
   }
 }
