@@ -1,0 +1,133 @@
+@import "../../styles//variables.scss";
+
+:host {
+  display: block;
+  min-height: 100dvh;
+}
+
+.login {
+  min-height: 100dvh;
+}
+
+.login-brand {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1 1 55%;
+  padding: 3rem;
+  color: #292222;
+  background-color: $primary-color;
+
+  &__logo {
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  &__logo-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 12px;
+    background: rgba(203, 26, 147, 0.18);
+    font-weight: 700;
+    font-size: 1.4rem;
+  }
+
+  &__headline {
+    margin: 4rem 0 1rem;
+    font-size: 2.25rem;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    max-width: 24ch;
+  }
+
+  &__subheadline {
+    margin: 0;
+    max-width: 46ch;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(53, 43, 43, 0.82);
+  }
+
+  &__features {
+    margin: 2.5rem 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: rgba(47, 40, 40, 0.9);
+    }
+
+    mat-icon {
+      color: rgb(255 255 255 / 85%);
+    }
+  }
+
+  &__footer {
+    margin-top: 3rem;
+    font-size: 0.85rem;
+    color: rgba(29, 24, 24, 0.65);
+  }
+}
+
+.login-panel {
+  flex: 1 1 45%;
+  padding: 2rem;
+  background: white;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 430px;
+  padding: 0.5rem 0.25rem;
+
+  &__title {
+    margin-bottom: 0.25rem;
+  }
+
+  &__field {
+    width: 100%;
+  }
+
+  &__options {
+    font-size: 0.875rem;
+  }
+
+  &__link {
+    color: var(--mat-sys-primary);
+    text-decoration: none;
+    font-weight: 500;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    height: 48px;
+    font-size: 1rem;
+  }
+
+  &__spinner {
+    display: inline-block;
+  }
+}
+
+@media (max-width: 959px) {
+  .login-brand {
+    display: none;
+  }
+}

@@ -40,6 +40,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
 
+.login-snackbar-error .mdc-snackbar__surface {
+  background-color: #d93025;
+}
+
+.login-snackbar-success .mdc-snackbar__surface {
+  background-color: #188038;
+}
+
+.login-snackbar-info .mdc-snackbar__surface {
+  background-color: #1a73e8;
+}
+
 //libraries
 @import "../node_modules/primeflex/primeflex.css";
 @import "../node_modules/material-symbols/outlined.css";

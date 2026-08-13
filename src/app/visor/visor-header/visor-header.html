@@ -1,10 +1,10 @@
 <div class="h-full flex align-items-center justify-content-center">
   <div #searcher>
-    <app-visor-searcher
-      (selection)="onBarSelected($event)"
-      [class.hidden]="screenStore.isDesktop()"
-    >
+    <app-visor-searcher (selection)="onBarSelected($event)" [class.hidden]="screenStore.isDesktop()">
     </app-visor-searcher>
   </div>
   <h1 class="brand" [class.hidden]="!screenStore.isDesktop()">MAIKIBars</h1>
+  <button mat-icon-button (click)="onLogout()" aria-label="Sign out">
+    <mat-icon>logout</mat-icon>
+  </button>
 </div>
