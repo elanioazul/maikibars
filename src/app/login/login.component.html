@@ -1,0 +1,103 @@
+<div class="login flex">
+  <aside class="login-brand">
+    <div>
+      <div class="login-brand__logo flex align-items-center gap-2">
+        <span class="login-brand__logo-mark">OM</span>
+        <span class="login-brand__logo-name">OutageMapper</span>
+      </div>
+
+      <h1 class="login-brand__headline">Every failed ping, under control.</h1>
+      <p class="login-brand__subheadline">
+        Sign in to open the dashboard/visor and keep an eye on your devices, outages and
+        response times from one place.
+      </p>
+
+      <ul class="login-brand__features">
+        <li>
+          <mat-icon>monitor_heart</mat-icon>
+          <span>Live status of every monitored endpoint</span>
+        </li>
+        <li>
+          <mat-icon>notifications_active</mat-icon>
+          <span>Instant alerts when a ping keeps failing</span>
+        </li>
+        <li>
+          <mat-icon>insights</mat-icon>
+          <span>Clear history of failures and recoveries</span>
+        </li>
+        <li>
+          <mat-icon>satellite</mat-icon>
+          <span>Map and diagrams for location porpuses</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="login-brand__footer">© 2026 OutageMapper. All rights reserved.</div>
+  </aside>
+
+  <main class="login-panel flex flex-column justify-content-center align-items-center">
+    <mat-card class="login-card" appearance="outlined">
+      <mat-card-header>
+        <mat-card-title class="login-card__title">Welcome back</mat-card-title>
+        <mat-card-subtitle>Sign in to continue to the visor.</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate class="flex flex-column">
+          <mat-form-field appearance="outline" class="login-card__field">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" type="email" placeholder="sumadre@indiano.es" autocomplete="email" />
+            <mat-icon matPrefix>mail</mat-icon>
+            @if (emailControl.invalid && submitted()) {
+              <mat-error>Enter a valid email address</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="login-card__field">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              formControlName="password"
+              [type]="hidePassword() ? 'password' : 'text'"
+              placeholder="••••••••"
+              autocomplete="current-password"
+            />
+            <mat-icon matPrefix>lock</mat-icon>
+            <button
+              mat-icon-button
+              type="button"
+              matSuffix
+              [attr.aria-label]="hidePassword() ? 'Show password' : 'Hide password'"
+              (click)="togglePasswordVisibility()"
+            >
+              <mat-icon>{{ hidePassword() ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+            @if (passwordControl.invalid && submitted()) {
+              <mat-error>Password must be at least 8 characters</mat-error>
+            }
+          </mat-form-field>
+
+          <div class="login-card__options flex justify-content-between align-items-center mt-2">
+            <mat-checkbox formControlName="rememberMe" color="primary">Remember me</mat-checkbox>
+            <a href="#" class="login-card__link" (click)="showToast('Password recovery is not available in this demo.', 'login-snackbar-info')">Forgot password?</a>
+          </div>
+
+          <button
+            mat-flat-button
+            color="primary"
+            type="submit"
+            class="login-card__submit mt-4"
+            [disabled]="!isFormValid() || submitting()"
+          >
+            @if (submitting()) {
+              <mat-spinner diameter="20" class="login-card__spinner"></mat-spinner>
+            } @else {
+              <mat-icon>login</mat-icon>
+            }
+            <span>{{ submitting() ? 'Signing in…' : 'Sign in' }}</span>
+          </button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </main>
+</div>
